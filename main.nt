@@ -426,7 +426,7 @@ process pilon_loop {
     publishDir "pilon/${sample_id}", mode: 'copy'
 
 /* 
-Le fichier filtered_contigs est d'abors copié dans le répertoire work de pilon pour ne pas risquer de l'écraser ailleurs
+Le fichier filtered_contigs est d'abord copié dans le répertoire work de pilon pour ne pas risquer de l'écraser ailleurs
 
 bwa index : Indexation des contigs (génome de réference ici)
 
