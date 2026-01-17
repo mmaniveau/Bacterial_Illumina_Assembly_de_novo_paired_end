@@ -1,0 +1,55 @@
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+# Nextflow / pipeline temp
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+work/
+.nextflow.log
+*.tmp
+*.out
+*.err
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+# FastQC outputs
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+qc_fastqc_*/
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+# Trimmed reads outputs
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+trim_reads/*
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+# SPAdes outputs
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+spades/*
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+# Filtered contigs outputs
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+contigs_filtered/*
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+# Pilon outputs
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+pilon/*
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+# Prokka outputs
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+prokka/*
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+# Données volumineuses / binaires
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+*.fastq
+*.fq
+*.fasta
+*.fa
+*.bam
+*.sam
+*.zip
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+# Fichiers système / éditeur
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+.DS_Store
+*.swp
