@@ -84,14 +84,14 @@ def validate_int_params(param_map) {
 }
 
 def validate_spades_mode(mode) {
-    // 1️⃣ Liste des valeurs autorisées (sans tirets pour l'utilisateur)
+    // 1️- Liste des valeurs autorisées (sans tirets pour l'utilisateur)
     def allowed_modes = ['default', 'careful', 'meta']
     
     if (!allowed_modes.contains(mode)) {
         error "[ERROR] Paramètre spades_mode invalide : '${mode}'. Choisir parmi : ${allowed_modes.join(', ')}."
     }
 
-    // 2️⃣ Mapping vers l'option SPAdes avec tirets
+    // 2️- Mapping vers l'option SPAdes avec tirets
     def spades_flag = ''
     if (mode == 'careful') spades_flag = '--careful'
     else if (mode == 'meta') spades_flag = '--meta'
