@@ -11,6 +11,8 @@ params.fastp_u           --> Pourcentage maximal de bases de mauvaise qualité p
 params.min_contig_length --> Taille minimale d’un contig à conserver après filtrage avec seqtk -L
 params.pilon_nb_iter     --> Nombre d’itérations de correction du génome avec Pilon
 params.spades_mode       --> Permet de choisir le mode d'assemblage : careful, meta ou default
+params.reads_dir         --> Permet d'indiquer un chemin où trouver les fichiers à analyser
+                             par défaut le programme cherche les fichiers dans le dossier où il se trouve
 
 Ces paramètres peuvent être modifiés par l’utilisateur pour ajuster le pipeline sans toucher au code tel que : 
 
@@ -19,6 +21,7 @@ Ces paramètres peuvent être modifiés par l’utilisateur pour ajuster le pipe
 --min_contig_length <int> ≥ 100
 --pilon_nb_iter <int> ≥ 1
 --spades_mode <careful ou meta ou default>
+--reads_dir /home/User/Files
 
 */
 
