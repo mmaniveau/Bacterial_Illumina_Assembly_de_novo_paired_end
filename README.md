@@ -2,7 +2,7 @@
 
 ## Description
 ⚠️ Ce pipeline a été développé **à titre pédagogique**, avec de nombreux commentaires pour expliquer chaque étape.
-Il est conçu pour l’assemblage _de novo_ de génomes bactériens à partir de reads paired-end Illumina, et est voué à évoluer pour intégrer d’autres commentaires supplémentaires et options, comme le traitement de reads single-end.
+Il est conçu pour l’assemblage _de novo_ de génomes bactériens à partir de reads paired-end Illumina, et est voué à évoluer pour intégrer d’autres commentaires supplémentaires et options, comme le traitement de reads single-end ou en collection.
 
 
 Ce pipeline Nextflow permet l’assemblage complet de génomes bactériens à partir de reads Illumina paired-end.  
