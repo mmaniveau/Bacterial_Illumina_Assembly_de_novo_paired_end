@@ -89,10 +89,11 @@ Le pipeline peut être configuré via la ligne de commande Nextflow. Les paramè
 - `pilon_nb_iter` : nombre d’itérations pour Pilon (défaut 3, ≥1)
 - `reads_dir` : dossier contenant les reads (défaut `./`)
 - `spades_mode` : mode d’assemblage SPAdes (`default`, `careful`, `meta`; défaut `default`)
+- `reads_dir` : chemin vers les fichiers à analyser
 
 **Exemple de lancement avec paramètres personnalisés :**
 ```bash
-nextflow run main.nf --reads_dir ./my_reads --fastp_q 25 --fastp_u 15 --min_contig_length 1000 --pilon_nb_iter 2 --spades_mode careful
+nextflow run main.nf --reads_dir ./my_reads --fastp_q 25 --fastp_u 15 --min_contig_length 1000 --pilon_nb_iter 2 --spades_mode careful 
 ````
 
 ---
