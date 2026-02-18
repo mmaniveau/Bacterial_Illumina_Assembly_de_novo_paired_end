@@ -39,7 +39,7 @@ Les outils suivants doivent être installés et accessibles dans le `$PATH` :
 ---
 
 
-## Installation et fourniture des reads
+## Installation et emplacement des reads
 
 Le pipeline utilise désormais un **fichier CSV** pour définir explicitement les reads **FASTQ paired-end** à analyser.
 
