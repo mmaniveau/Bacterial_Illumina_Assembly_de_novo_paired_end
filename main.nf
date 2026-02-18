@@ -256,7 +256,8 @@ process spades_assembly {
     """
     spades.py -1 $r1 -2 $r2 -o spades_${sample_id} $spades_mode_with_flag
 
-    cp spades_${sample_id}/contigs.fasta ${sample_id}_contigs.fasta
+    #Spades donne des noms de contig très long cette commande
+    awk '/^>/ {print ">C" ++i; next} {print}' spades_${sample_id}/contigs.fasta > ${sample_id}_contigs.fasta
     """
 }
 
@@ -393,8 +394,7 @@ process pilon_loop {
 
     publishDir "pilon/${sample_id}", mode: 'copy'
 
-/* 
-Le fichier filtered_contigs est d'abord copié dans le répertoire work de pilon pour ne pas risquer de l'écraser ailleurs
+/* Le fichier filtered_contigs est d'abord copié dans le répertoire work de pilon pour ne pas risquer de l'écraser ailleurs
 
 bwa index : Indexation des contigs (génome de réference ici)
 
@@ -414,7 +414,8 @@ samtools index : Indexation du fichier d'alignement .bam en .bai
     cp $filtered_contigs pilon_work.fasta
 
     for i in \$(seq 1 $params.pilon_nb_iter); do
-        rm -f align_sorted.bam align_sorted.bam.bai
+        # Nettoyage des index BWA et BAM de l'itération précédente
+        rm -f align_sorted.bam align_sorted.bam.bai pilon_work.fasta.*
 
         bwa index pilon_work.fasta
 
@@ -430,10 +431,14 @@ samtools index : Indexation du fichier d'alignement .bam en .bai
           --outdir pilon_iter_\${i} \
           --output ${sample_id}_pilon_iter_\${i}
 
+        sed -i 's/_pilon//g' pilon_iter_\${i}/${sample_id}_pilon_iter_\${i}.fasta
         cp pilon_iter_\${i}/${sample_id}_pilon_iter_\${i}.fasta pilon_work.fasta
     done
 
     cp pilon_work.fasta ${sample_id}_pilon_final.fasta
+    
+    # Nettoyage final des index BWA
+    rm -f pilon_work.fasta.*
     """
 }
 
@@ -549,6 +554,8 @@ workflow Raw_Reads_QC {
             def sample_id = row.sample_id.trim()
             def r1 = file(row.R1.trim())
             def r2 = file(row.R2.trim())
+            
+            // Validation de l'existence des fichiers pour éviter un crash en cours de route
             if (!r1.exists()) {
                 error "[ERROR] Fichier R1 introuvable pour '${sample_id}': ${r1}"
             }
@@ -560,7 +567,7 @@ workflow Raw_Reads_QC {
 
         // Affiche les samples
         raw_reads.subscribe { id, r1, r2 ->
-            println "[INFO] Sample : ${id}, R1=${r1}, R2=${r2}"
+            println "[INFO] Sample : ${id}, R1=${r1.name}, R2=${r2.name}"
         }
 
         // Appel du process FastQC
